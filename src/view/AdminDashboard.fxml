@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.AdminDashboardController">
+    
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <MenuBar>
+        <Menu text="File">
+            <MenuItem text="Logout" onAction="#handleLogout"/>
+            <SeparatorMenuItem/>
+            <MenuItem text="Exit" onAction="#handleExit"/>
+        </Menu>
+        <Menu text="Format">
+            <Menu text="Font Size">
+                <MenuItem text="Small" onAction="#setSmallFont"/>
+                <MenuItem text="Medium" onAction="#setMediumFont"/>
+                <MenuItem text="Large" onAction="#setLargeFont"/>
+            </Menu>
+            <Menu text="Font Family">
+                <MenuItem text="Arial" onAction="#setFontArial"/>
+                <MenuItem text="Times New Roman" onAction="#setFontTimes"/>
+                <MenuItem text="Courier New" onAction="#setFontCourier"/>
+            </Menu>
+            <SeparatorMenuItem/>
+            <MenuItem text="Light Theme" onAction="#setLightTheme"/>
+            <MenuItem text="Dark Theme" onAction="#setDarkTheme"/>
+        </Menu>
+        <Menu text="Help">
+            <MenuItem text="About" onAction="#handleAbout"/>
+        </Menu>
+    </MenuBar>
+    
+    <Label text="Admin Dashboard" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+    
+    <!-- Dashboard Stats -->
+    <GridPane hgap="10" vgap="10">
+        <Label text="Total Organizations:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label fx:id="totalOrgsLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Total Users:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label fx:id="totalUsersLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Total Families:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label fx:id="totalFamiliesLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Families Served:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label fx:id="familiesServedLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+        
+        <Label text="Families Not Served:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Label fx:id="familiesNotServedLabel" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    </GridPane>
+    
+    <TabPane>
+        <Tab text="Organizations">
+            <VBox spacing="5">
+                <TableView fx:id="orgTable" prefHeight="200"/>
+                <GridPane hgap="5" vgap="5">
+                    <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="orgIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" editable="false"/>
+                    <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="orgNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="orgTypeField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Contact:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="orgContactField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                </GridPane>
+                <HBox spacing="5">
+                    <Button text="Add" onAction="#addOrganization"/>
+                    <Button text="Update" onAction="#updateOrganization"/>
+                    <Button text="Delete" onAction="#deleteOrganization"/>
+                    <Button text="Clear" onAction="#clearOrganizationForm"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        
+        <Tab text="Users">
+            <VBox spacing="5">
+                <TableView fx:id="userTable" prefHeight="200"/>
+                <GridPane hgap="5" vgap="5">
+                    <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="userIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" editable="false"/>
+                    <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="userFullNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="userUsernameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="userPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="userEmailField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="userRoleCombo" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <Label text="Organization:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <ComboBox fx:id="userOrgCombo" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                </GridPane>
+                <HBox spacing="5">
+                    <Button text="Add" onAction="#addUser"/>
+                    <Button text="Update" onAction="#updateUser"/>
+                    <Button text="Delete" onAction="#deleteUser"/>
+                    <Button text="Clear" onAction="#clearUserForm"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        
+        <Tab text="Families">
+            <VBox spacing="5">
+                <TableView fx:id="familyTable" prefHeight="200"/>
+                <GridPane hgap="5" vgap="5">
+                    <Label text="ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="familyIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" editable="false"/>
+                    <Label text="National ID:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="familyNationalIdField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <Label text="Head Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="familyHeadNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="familyPhoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="familyAddressField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="Vulnerability:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="familyVulnerabilityCombo" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <Label text="Registration Date:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <DatePicker fx:id="familyDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                </GridPane>
+                <HBox spacing="5">
+                    <Button text="Add" onAction="#addFamily"/>
+                    <Button text="Update" onAction="#updateFamily"/>
+                    <Button text="Delete" onAction="#deleteFamily"/>
+                    <Button text="Clear" onAction="#clearFamilyForm"/>
+                </HBox>
+            </VBox>
+        </Tab>
+        
+        <Tab text="Aid Distributions">
+            <VBox spacing="5">
+                <TableView fx:id="distTable" prefHeight="300"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.LoginController">
+    
+    <padding>
+        <Insets top="50" right="50" bottom="50" left="50"/>
+    </padding>
+    
+    <Label text="GHADS - Gaza Humanitarian Aid Distribution System" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    <Label text="Login to your account"/>
+    
+    <TextField fx:id="usernameField" promptText="Username" maxWidth="300"/>
+    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="300"/>
+    
+    <Label fx:id="errorLabel" text="" style="-fx-text-fill: red;"/>
+    
+    <Button text="Login" onAction="#handleLogin" maxWidth="300"/>
+    
+</VBox>
